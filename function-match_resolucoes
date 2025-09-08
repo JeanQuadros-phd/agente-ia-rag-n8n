@@ -1,0 +1,29 @@
+create or replace function match_resolucoes (
+  query_embedding vector(1536),
+  match_count int default null,
+  filter jsonb DEFAULT '{}'
+)
+returns table (
+  id uuid,
+  resolucao_id uuid,
+  content text,
+  metadata jsonb,
+  similarity float
+)
+language plpgsql
+as $$
+#variable_conflict use_column
+begin
+  return query
+  select
+    r.id,
+    r.resolucao_id,
+    r.content,
+    r.metadata,
+    1 - (r.embedding <=> query_embedding) as similarity
+  from resolucoes_vec r
+  where r.metadata @> filter
+  order by r.embedding <=> query_embedding
+  limit match_count;
+end;
+$$;
