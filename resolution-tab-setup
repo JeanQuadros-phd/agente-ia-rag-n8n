@@ -1,0 +1,18 @@
+-- (1) habilita função gen_random_uuid() se não existir
+create extension if not exists "pgcrypto";
+
+-- (2) cria a tabela de resoluções
+create table if not exists public.resolucoes (
+  id uuid primary key default gen_random_uuid(),
+  titulo text not null,
+  ementa text,
+  estrutura jsonb,
+  data_insercao timestamptz default now()
+);
+
+-- (3) índices úteis
+-- GIN para acelerar consultas sobre jsonb
+create index if not exists idx_resolucoes_estrutura_gin on public.resolucoes using gin (estrutura);
+
+-- índice simples em título (consulta textual)
+create index if not exists idx_resolucoes_titulo on public.resolucoes (lower(titulo));
