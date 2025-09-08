@@ -34,8 +34,8 @@ A solução foi desenvolvida com **n8n** para orquestração de fluxos, **Supaba
 ##  Como Reproduzir
 1. **Clone este repositório**
    ```bash
-   git clone https://github.com/seu-usuario/agente-ia-whatsapp-supabase-n8n.git
-   cd agente-ia-whatsapp-supabase-n8n
+   git clone https://github.com/seu-usuario/agente-ia-rag-n8n.git
+   cd agente-ia-rag-n8n
 Configure o Supabase
 
 Crie a tabela vetorial resolucoes_vec e a função match_resolucoes (scripts em /docs/instrucoes.md).
