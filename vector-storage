@@ -1,0 +1,20 @@
+-- (1) habilitar extensão pgvector (se já tiver, ignora)
+create extension if not exists vector;
+
+-- (2) tabela vetorial
+create table if not exists resolucoes_vec (
+  id uuid primary key default gen_random_uuid(),
+  resolucao_id uuid references resolucoes(id) on delete cascade,
+  tipo text,          -- "artigo", "paragrafo", "inciso", "anexo", "titulo", etc
+  referencia text,    -- string curta que identifica (ex: "Art. 12 - Parágrafo único")
+  content text,      -- trecho de texto usado para gerar embedding
+  embedding vector(1536), -- 1536 é exemplo. ajuste conforme modelo.
+  metadata jsonb,     -- obj json com contexto: { resolucao_titulo, ementa, capitulo, artigo ... }
+  created_at timestamptz default now()
+);
+
+-- (3) índice para busca vetorial (ivfflat é bom para muitos vetores).
+-- ajuste lists conforme tamanho/capacidade e hardware; 100 é um valor inicial razoável.
+create index if not exists resolucoes_vec_embedding_idx
+  on resolucoes_vec using ivfflat (embedding vector_cosine_ops)
+  with (lists = 100);
