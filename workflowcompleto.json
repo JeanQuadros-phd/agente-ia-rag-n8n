@@ -20,7 +20,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBZNGWnU78_EhkujlSgkibx62EWO-V5S78",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=yourkey",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -47,7 +47,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBZNGWnU78_EhkujlSgkibx62EWO-V5S78",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=yourkey",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -515,7 +515,7 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "Sa0T8tBjCQgeaADZiS107Zn0MsfAI7J9"
+              "value": "yourapikey"
             }
           ]
         },
@@ -592,7 +592,7 @@
           "parameters": [
             {
               "name": "apikey",
-              "value": "Sa0T8tBjCQgeaADZiS107Zn0MsfAI7J9"
+              "value": "yourkey"
             }
           ]
         },
@@ -674,7 +674,7 @@
             {
               "id": "83c8e36a-5b04-4d8e-bf7e-2b757adb7270",
               "leftValue": "={{ $json.body.data.key.remoteJid }}",
-              "rightValue": "559186502020@s.whatsapp.net",
+              "rightValue": "9999999999@s.whatsapp.net",
               "operator": {
                 "type": "string",
                 "operation": "equals",
